@@ -1,4 +1,4 @@
-# travel_booking
+# Travel Booking System
 
 ## Project Structure
 
@@ -46,11 +46,8 @@ This is a collaborative Django project for managing travel bookings, reviews, pa
 **Features:**
 - Submit and view reviews
 - Rating system
-- Avatar support for reviews
 
-## How to Contribute
 
-Each app should be added in a separate branch and pull request for clear collaboration. See the included instructions for step-by-step guidance for team members.
 
 ## Getting Started
 
@@ -59,5 +56,3 @@ Each app should be added in a separate branch and pull request for clear collabo
 3. Install dependencies
 4. Run migrations
 5. Start the development server
-
-See each app's folder for more details and templates.
