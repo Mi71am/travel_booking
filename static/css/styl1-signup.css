@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=MedievalSharp&display=swap');
+
+body {
+	background-color: #0d1b2a;
+	color: #e0cba8;
+	padding: 2rem;
+	max-width: 1000px;
+	margin: 0 auto;
+	font-family: Poppins, 'Segoe UI', sans-serif;
+}
+
+h1, h2, h3, h4 {
+	text-align: center;
+	font-family: 'Cinzel Decorative', serif;
+	color: #f4e9d8;
+}
+
+.overlay {
+	background-color: rgba(13, 27, 42, 0.92);
+	padding: 2rem;
+	border-radius: 12px;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+	max-width: 800px;
+	margin: 2rem auto;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	gap: 1.2rem;
+}
+
+label {
+	font-weight: bold;
+	color: #f4e9d8;
+	font-size: 1rem;
+	margin-bottom: 0.3rem;
+	display: block;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="password"],
+select {
+	padding: 0.65rem;
+	border-radius: 8px;
+	border: 1px solid #e0cba8;
+	background-color: #102133;
+	color: #f4e9d8;
+	margin-top: 0.3rem;
+	margin-bottom: 1.2rem;
+}
