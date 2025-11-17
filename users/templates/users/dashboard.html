@@ -1,0 +1,148 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Nordic Trails</title>
+  <link rel="icon" href="{% static 'images/logon4.png' %}">
+  <!-- Google Fonts for dashboard -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caesar+Dressing&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=MedievalSharp&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+<body>
+  {% if messages %}
+    <div id="message-dropdown" style="position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:9999;min-width:300px;max-width:90vw;">
+      {% for message in messages %}
+        <div style="background:#e0cba8;color:#0d1b2a;padding:1rem 2rem;border-radius:10px;box-shadow:0 2px 12px #0003;font-weight:bold;text-align:center;margin-bottom:8px;animation:fadeOut 2.5s 1.5s forwards;">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+    <script>
+      setTimeout(function(){
+        var el = document.getElementById('message-dropdown');
+        if(el) el.style.display = 'none';
+      }, 4000);
+    </script>
+    <style>@keyframes fadeOut{to{opacity:0;}}</style>
+  {% endif %}
+  <div class="navigation-wrapper">
+    <div class="address1_wrapper">
+      <a href="/users/profile/" class="profile-pic-wrapper">
+        <img src="{% if user_profile and user_profile.profile_pic %}{{ user_profile.profile_pic.url }}{% else %}{% static 'images/default-avatar.png' %}{% endif %}" alt="Profile Picture" class="navbar-profile-pic">
+        <div class="profile-overlay">View Profile</div>
+      </a>
+    </div>
+    <div class="bgsect">
+      <div class="address_wrapper">
+        <img src="{% static 'images/logon4.png' %}" alt="logo">
+      </div>
+      <header>
+        <h1>Welcome, {{ user.username }}!</h1></header>
+        
+      
+    
+  </div>
+  <div class="dashboard-actions" style="display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-top:10px;">
+  <a href="{% url 'reviews_index' %}" class="action-link">Go to Reviews</a>
+  <a href="{% url 'booking_summary' %}" class="action-link">Proceed to Checkout</a>
+  <a href="/" class="action-link">Logout</a>
+  </div>
+  <style>
+    .action-link {
+      font-family: 'Cinzel Decorative', serif;
+      color: #ffd8b0;
+      font-weight: 200;
+      text-decoration: none;
+      padding: 0.38rem 0.8rem;
+      border-radius: 8px;
+      border: 1.5px solid rgba(255,216,176,0.35);
+      transition: box-shadow 0.2s, color 0.2s, text-shadow 0.2s, border-color 0.2s;
+      background: none;
+      box-shadow: none;
+      display: inline-block;
+      font-size: 0.93rem;
+      letter-spacing: 0.5px;
+      text-shadow: 0 0 6px #fff3e0, 0 0 2px #ffd8b0;
+    }
+    .action-link:hover {
+      color: #58ccff;
+      box-shadow: 0 0 10px 2px #58ccff88;
+      background: none;
+    }
+  </style>
+    </div>
+  <section class="discount-mission">
+    <div class="parallax-bg">
+      <div class="discount-box">
+        <h2 class="discount-title">Beyond a Discount — A Cultural Revival</h2>
+        <p class="discount-text">
+          At Nordic Trails, we believe that Viking culture isn't something to read about — it's something to feel, taste, and relive.
+        </p>
+        <p class="discount-text">
+          Our discounted trips are not about slashing prices — they're about removing barriers. We want more explorers to walk the same icy paths, stand in longhouses lit by torchlight, and hear the wind sing ancient sagas.
+        </p>
+        <p class="discount-text">
+          As part of this cultural revival, all our Nordic journeys are now offered at <strong>50% off</strong>. Yes — every trip, from the fjords of Norway to the frozen lights of Finland, is now within closer reach.
+        </p>
+        <p class="discount-text">
+          Come not as a tourist — but as a part of a revival.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <a href="/bookings/create/" style="display:block;text-decoration:none;color:inherit;">
+    <div class="image-banner">
+      <div class="banner-text">Click here to begin your Booking!</div>
+    </div>
+  </a>
+  </main>
+
+  <section class="experience-gallery">
+    <h2 class="section-title">Immersive Viking Experiences</h2>
+    <p class="section-intro">Step into the saga through real adventures. From daring fjord kayaking to feasts worthy of the gods, here’s what you can live through on the trail:</p>
+    <div class="exp-grid">
+      <div class="exp-category">
+        <h3 class="exp-title">🚣‍♀️ Fjord Adventures</h3>
+        <img src="{% static 'images/kayak1.jpg' %}" alt="Kayaking through the fjords">
+        <img src="{% static 'images/kayak2.jpg' %}" alt="Viking kayaking adventure">
+        <img src="{% static 'images/kayak3.jpg' %}" alt="Fjord water travel">
+        <img src="{% static 'images/kayak4.jpg' %}" alt="Kayak through Gudvangen">
+      </div>
+      <div class="exp-category">
+        <h3 class="exp-title">🍖 Norse-Style Feasting</h3>
+        <img src="{% static 'images/meal1.jpg' %}" alt="Hearty Viking feast">
+        <img src="{% static 'images/meal2.jpg' %}" alt="Roasted meal Viking style">
+        <img src="{% static 'images/meal3.jpg' %}" alt="Longhouse dining">
+        <img src="{% static 'images/meal4.jpg' %}" alt="Viking dish presentation">
+        <img src="{% static 'images/meal5.jpg' %}" alt="Longhouse dining">
+      </div>
+      <div class="exp-category">
+        <h3 class="exp-title">🥾 Trail Exploration</h3>
+        <img src="{% static 'images/hike1.jpg' %}" alt="Hiking Viking trails">
+        <img src="{% static 'images/hike2.jpg' %}" alt="Scenic mountain trek">
+        <img src="{% static 'images/hike3.jpg' %}" alt="Exploring rugged paths">
+        <img src="{% static 'images/ski1.jpg' %}" alt="Exploring rugged paths">
+      </div>
+      <div class="exp-category">
+        <h3 class="exp-title">⚔️ Experience the Viking Culture</h3>
+        <img src="{% static 'images/react1.jpg' %}" alt="Viking battle reenactment">
+        <img src="{% static 'images/react2.jpg' %}" alt="Historical combat">
+        <img src="{% static 'images/react3.jpg' %}" alt="Shield wall reenactment">
+        <img src="{% static 'images/react4.jpg' %}" alt="Horse Riding">
+      </div>
+    </div>
+  </section>
+
+  {% include 'footer.html' %}
+</body>
+</html>

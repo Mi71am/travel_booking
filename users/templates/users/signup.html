@@ -1,0 +1,189 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up - Viking Legacy</title>
+  <link rel="icon" href="{% static 'images/logon4.png' %}">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=MedievalSharp&display=swap');
+    body {
+      background: url('{% static "images/lofoten1.jpg" %}') no-repeat center center fixed;
+      background-size: cover;
+      color: #e0cba8;
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 2rem;
+    }
+    h1, h4 {
+      text-align: center;
+      font-family: 'Cinzel Decorative', serif;
+      color: #f4e9d8;
+    }
+    .lin {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      margin-bottom: 2rem;
+    }
+    .lin a {
+      font-family: 'Cinzel Decorative', serif;
+      font-weight: bold;
+      text-decoration: none;
+      background-color: #e8d2a0c0;
+      color: #0d1b2a;
+      padding: 10px 20px;
+      border-radius: 29px;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      border: 1px solid #c9b37e;
+      text-shadow: 0 0 5px #fff, 0 0 10px #6ecaff;
+    }
+    .lin a:hover {
+      background-color:rgba(1, 3, 52, 0.58);
+      transform: scale(1.1);
+    }
+    .overlay {
+      background-color: rgba(13, 27, 42, 0.61);
+      padding: 2.5rem;
+      border-radius: 14px;
+      max-width: 700px;
+      margin: auto;
+      box-shadow: 0 0 18px rgba(0, 0, 0, 0.5);
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+      margin-top: 1.5rem;
+    }
+    label {
+      font-weight: bold;
+      margin-bottom: 0.2rem;
+      display: block;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    input[type="password"],
+    select {
+      padding: 0.7rem;
+      border-radius: 8px;
+      border: 1px solid #e0cba8;
+      background-color: #102133;
+      color: #f4e9d8;
+      width: 100%;
+      font-size: 1rem;
+      box-shadow: inset 0 0 4px rgba(255, 255, 255, 0.05);
+    }
+    input:focus,
+    select:focus {
+      outline: none;
+      border-color: #c9b37e;
+      box-shadow: 0 0 6px rgba(201, 179, 126, 0.6);
+    }
+    input[type="submit"] {
+      background-color: #c9b37e;
+      color: #0d1b2a;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      padding: 0.9rem;
+      font-size: 1.1rem;
+      margin-top: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    input[type="submit"]:hover {
+      background-color: #e0cba8;
+      transform: scale(1.04);
+    }
+    .password-requirements {
+      font-size: 0.85rem;
+      color: #c4b998;
+      line-height: 1.5;
+      margin-top: -1rem;
+      margin-bottom: 0.5rem;
+    }
+    .error-message,
+    .success-message {
+      font-size: 0.85rem;
+      margin-top: 0.3rem;
+      padding-left: 0.4rem;
+    }
+    .error-message {
+      color: #ff6b6b;
+    }
+    .success-message {
+      color: #3bd26d;
+    }
+    hr {
+      border: none;
+      height: 1px;
+      background: #7c6c4e;
+      margin: 2rem 0;
+    }
+    small {
+      display: block;
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: #a7a7a7;
+    }
+  </style>
+</head>
+<body>
+  <div class="lin">
+    <a href="{% url 'home' %}">← Home</a>
+    <a href="/users/login/">Login</a>
+  </div>
+  <div class="overlay">
+    <h1>Join the Viking Legacy</h1>
+    <h4><em>Be a part of the saga. Fill in your details below to begin your adventures with Nordic Trails.</em></h4>
+    <hr>
+    {% if messages %}
+      {% for message in messages %}
+        <div class="{% if message.tags %}{{ message.tags }}{% endif %}-message">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <label>Account Type:</label>
+      <select name="account_type" required>
+        <option value="">--Select Account Type--</option>
+        <option value="Adventurer">Adventurer – Thrill-seekers who crave rugged trails and epic journeys.</option>
+        <option value="Historian">Historian – Culture lovers drawn to Nordic myths and ancient sites.</option>
+        <option value="Photographer">Photographer – Visual storytellers capturing icy beauty and Viking heritage.</option>
+        <option value="VIP Raider">VIP Raider – Premium experience with elite access and luxury trails.</option>
+      </select>
+      <label for="fname">Username:</label>
+      <input type="text" id="fname" name="fname" required>
+      <label for="profile_pic">Profile Picture:</label>
+      <input type="file" id="profile_pic" name="profile_pic" accept="image/*" required>
+      <label for="email">Email Address:</label>
+      <input type="email" id="email" name="email" required>
+      <label for="pnum">Phone Number:</label>
+      <input type="tel" id="pnum" name="pnum" required>
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" name="dob" required>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      <div class="password-requirements">
+        Password must contain:
+        <ul style="margin-left: 1rem;">
+          <li>At least one uppercase letter</li>
+          <li>At least one lowercase letter</li>
+          <li>At least one number</li>
+          <li>At least one special character</li>
+          <li>Minimum of 8 characters</li>
+        </ul>
+      </div>
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" required>
+      <input type="submit" value="Sign up">
+    </form>
+    <small>© 2025 Nordic Trails. All rights reserved.</small>
+    <hr>
+  </div>
+</body>
+</html>
