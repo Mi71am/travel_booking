@@ -1,0 +1,220 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payments | Nordic Trails</title>
+  <link rel="icon" href="{% static 'images/logon4.png' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Open+Sans:wght@400;700&family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background:
+        linear-gradient(rgba(10, 20, 30, 0.75), rgba(10, 20, 30, 0.85)),
+        url("{% static 'images/lofoten3.jpg' %}") no-repeat center center fixed;
+      background-size: cover;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .container {
+      max-width: 850px;
+      margin: 3.5rem auto;
+      background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(1.2px);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 4px 40px rgba(0, 0, 0, 0.4);
+    }
+    h1 {
+      font-family: 'Cinzel Decorative', serif;
+      color: #e0cba8;
+      text-align: center;
+      font-size: 2.4rem;
+      letter-spacing: 1px;
+      margin-bottom: 2rem;
+    }
+    h2 {
+      font-family: 'Cinzel Decorative', serif;
+      color: #e0cba8;
+      margin-bottom: 0.6rem;
+      font-size: 1.4rem;
+    }
+    .top-buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    .btn {
+      padding: 0.75rem 1.6rem;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 1.05rem;
+      text-decoration: none;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      transition: 0.3s ease;
+      color: #14243a;
+    }
+  .btn-dashboard { background: #c9b37e; }
+  .btn-booking { background: #c9b37e; }
+  .btn-payment { background: #58ccff; }
+    .btn:hover { opacity: 0.85; transform: translateY(-2px); }
+
+    .total {
+      text-align: right;
+      font-size: 1.2rem;
+      color: #58ccff;
+      margin-bottom: 1.5rem;
+      font-family: 'Cinzel Decorative', serif;
+    }
+    .payment-card {
+      border: 2px solid #58ccff;
+      background: rgba(16, 33, 51, 0.9);
+      padding: 1.4rem 1.6rem;
+      margin-bottom: 1.7rem;
+      border-radius: 14px;
+      box-shadow: 0 3px 14px rgba(0, 0, 0, 0.3);
+      transition: 0.3s ease;
+    }
+    .payment-card p {
+      color: #b6d6f2;
+      font-size: 1.05rem;
+      margin: 0.3rem 0;
+      font-family: 'Roboto', sans-serif;
+    }
+    .payment-card p strong {
+      color: #e0cba8;
+    }
+    .delete-btn {
+      background: #c94f4f;
+      border: none;
+      padding: 0.6rem 1.4rem;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.05rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      transition: 0.3s ease;
+    }
+    .delete-btn:hover {
+      background: #a83232;
+      transform: translateY(-2px);
+    }
+    .empty-message {
+      text-align: center;
+      font-style: italic;
+      color: #ddd;
+      margin-top: 2rem;
+      font-size: 1.15rem;
+      font-family: 'Montserrat', sans-serif;
+    }
+     form {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      color: #0d1b2a;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+    input[type="text"],
+    input[type="number"],
+    select {
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      padding: 0.95rem 1.2rem;
+      border-radius: 12px;
+      background: linear-gradient(120deg, #f5f5f5 80%, #e0cba8 100%);
+      border: 2px solid #c9b37e;
+      color: #14243a;
+      margin-bottom: 1.2rem;
+      font-family: 'Montserrat', 'Open Sans', sans-serif;
+      font-size: 1.08rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    input:focus, select:focus {
+      outline: none;
+      border-color: #8b6b2d;
+      box-shadow: 0 0 5px #c9b37e;
+    }
+    button {
+      background-color: #c9b37e;
+      color: #0d1b2a;
+      font-weight: bold;
+      padding: 0.9rem 2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: 0.3s ease;
+    }
+    button:hover {
+      background-color: #e0cba8;
+      transform: scale(1.05);
+    }
+    .success-message {
+      text-align: center;
+      margin-top: 1.5rem;
+      color: #2a7a3b;
+      font-weight: bold;
+    }
+    .error-message {
+      text-align: center;
+      margin-top: 1.5rem;
+      color: #b32626;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="container">
+      <div class="top-buttons">
+        <a href="{% url 'dashboard' %}" class="btn btn-dashboard">← Dashboard</a>
+        <a href="{% url 'create_booking' %}" class="btn btn-dashboard">Back to Booking</a>
+      </div>
+
+      <h1>Payments</h1>
+      <p style="text-align:center;color:#b6d6f2;margin-bottom:2rem;">Easily and securely pay for your Nordic Trails adventures.</p>
+
+      <form method="post">
+        {% csrf_token %}
+        <label for="amount">Amount (USD)</label>
+        <input type="number" name="amount" id="amount" step="0.01" min="1" placeholder="Enter amount" required>
+
+        <label for="payment_method">Payment Method</label>
+        <select name="payment_method" id="payment_method" required>
+          <option value="">-- Choose a method --</option>
+          <option value="credit_card">Credit / Debit Card</option>
+          <option value="paypal">PayPal</option>
+          <option value="mpesa">M-Pesa</option>
+        </select>
+
+        <div id="card-details">
+          <label for="card_number">Card Number</label>
+          <input type="text" id="card_number" name="card_number" maxlength="16" placeholder="1234 5678 9012 3456">
+
+          <label for="expiry">Expiry Date</label>
+          <input type="text" id="expiry" name="expiry" placeholder="MM/YY">
+
+          <label for="cvv">CVV</label>
+          <input type="text" id="cvv" name="cvv" maxlength="3" placeholder="123">
+        </div>
+
+        <button type="submit" class="btn btn-dashboard">Confirm Payment</button>
+      </form>
+
+      {% if success %}
+        <p class="success-message">Payment Successful! Thank you for booking with Nordic Trails.</p>
+      {% elif error %}
+        <p class="error-message">Something went wrong. Please try again.</p>
+      {% endif %}
+    </div>
+  </main>
+</body>
+</html>
