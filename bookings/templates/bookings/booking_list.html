@@ -1,0 +1,4 @@
+{% extends 'base.html' %}
+{% block content %}
+  {% include 'bookings/_bookings_list.html' with bookings=bookings show_actions=True just_booked=show_only_latest %}
+{% endblock %}

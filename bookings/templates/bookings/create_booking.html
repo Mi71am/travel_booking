@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Trip | Nordic Trails</title>
+  <link rel="icon" href="{% static 'images/logon4.png' %}">
+  <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+  <!-- Google Fonts for all used font-families -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caesar+Dressing&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=MedievalSharp&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
+</head>
+<body>
+{% block content %}
+  {% if just_booked %}
+    <div id="booking-alert" style="position:fixed;top:30px;left:50%;transform:translateX(-50%);z-index:9999;background:#38d6c4;color:#0d1b2a;padding:1.2rem 2.5rem;border-radius:12px;box-shadow:0 2px 16px #0006;font-size:1.2rem;display:flex;align-items:center;gap:1.5rem;">
+      <span>Booking successful! <strong>Scroll down to view your booking details.</strong></span>
+      <button onclick="document.getElementById('booking-alert').style.display='none'" style="background:none;border:none;font-size:1.5rem;cursor:pointer;color:#0d1b2a;">&times;</button>
+    </div>
+    <script>
+      setTimeout(function(){
+        var el = document.getElementById('mybookings');
+        if(el) el.scrollIntoView({behavior:'smooth'});
+      }, 500);
+    </script>
+  {% endif %}
+  <div class="navigation-wrapper">
+    <div class="address1_wrapper">
+      <a href="/users/profile/" class="profile-pic-wrapper">
+        <img src="{% if user_profile and user_profile.profile_pic %}{{ user_profile.profile_pic.url }}{% else %}{% static 'images/default-avatar.png' %}{% endif %}" alt="Profile Picture" class="navbar-profile-pic">
+        <div class="profile-overlay">View Profile</div>
+      </a>
+    </div>
+    <div class="bgsect">
+      <div class="address_wrapper">
+        <img src="{% static 'images/logon4.png' %}" alt="logo">
+      </div>
+      <header>
+        <h1>Welcome, {{ user.username }}!</h1></header>
+    </div>
+    <div class="logout">
+      <a href="/users/dashboard/" style="display:block;margin-bottom:8px;background:#e0cba8;color:#0d1b2a;padding:8px 18px;border-radius:8px;text-decoration:none;font-weight:bold;box-shadow:0 2px 8px #0002;transition:background .2s;">Dashboard</a>
+      <br> <a href="{% url 'logout' %}">Logout</a>
+    </div>
+  </div>
+<div class="image-banner">
+    <br><br><br>
+    <div class="banner-text">Select a Destination to begin your Booking!</div>
+</div>
+<main class="grid">
+
+  <div class="card" style="background-image: url('{% static 'images/norway.jpg' %}');">
+    <div class="text">
+      <h3>Norway</h3>
+      <span>Viking Voyage Trip</span>
+      <p>Explore majestic fjords, chase northern lights, and embrace Viking roots.</p>
+         <a href="/bookings/book/norway/" class="btn-primary">Book Now</a>
+    </div>
+  </div>
+  <div class="card" style="background-image: url('{% static 'images/sweden.jpg' %}');">
+    <div class="text">
+      <h3>Sweden</h3>
+      <span>Frostbound Frontier</span>
+      <p>Wander through ancient forests, icy peaks, and timeless Swedish culture.</p>
+         <a href="/bookings/book/sweden/" class="btn-primary">Book Now</a>
+    </div>
+  </div>
+  <div class="card" style="background-image: url('{% static 'images/denmark.jpg' %}');">
+    <div class="text">
+      <h3>Denmark</h3>
+      <span>Runestone Realms Trip</span>
+      <p>Uncover Viking castles, bike through towns, and sail scenic coastlines.</p>
+         <a href="/bookings/book/denmark/" class="btn-primary">Book Now</a>
+    </div>
+  </div>
+  <div class="card" style="background-image: url('{% static 'images/finland.jpg' %}');">
+    <div class="text">
+      <h3>Finland</h3>
+      <span>Aurora Awakening Trip</span>
+      <p>Live the Nordic calm — saunas, snowfields, reindeer trails and auroras.</p>
+         <a href="/bookings/book/finland/" class="btn-primary">Book Now</a>
+    </div>
+  </div>
+  <div class="card" style="background-image: url('{% static 'images/iceland.jpg' %}');">
+    <div class="text">
+      <h3>Iceland</h3>
+      <span>Saga of Fire & Ice</span>
+      <p>Marvel at geysers, volcanoes, waterfalls, and otherworldly Viking lore.</p>
+         <a href="/bookings/book/iceland/" class="btn-primary">Book Now</a>
+    </div>
+  </div>
+  <div class="card" style="background-image: url('{% static 'images/estonia.jpg' %}');">
+    <div class="text">
+      <h3>Estonia</h3>
+      <span>Mystic Baltic Quest</span>
+      <p>Discover medieval towns, misty forests, and echoes of Norse trade routes.</p>
+         <a href="/bookings/book/estonia/" class="btn-primary">Book Now</a>
+    </div>
+  </div>
+
+{% if selected_destination %}
+<div class="container" style="max-width:700px;margin:auto;background:rgba(13,27,42,0.9);padding:2rem;border-radius:12px;box-shadow:0 0 20px #0009;">
+  <h1>Book Your Trip</h1>
+  <h2 style="color:#58ccff;">{{ selected_destination }}</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Book Now</button>
+  </form>
+</div>
+{% endif %}
+</main>
+
+
+
+
+{% endblock %}
+
+{% include 'footer.html' %}
